@@ -2,7 +2,7 @@ package com.example.samplerecyclerview
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.example.samplerecyclerview.ui.fragment.SimpleRecyclerFragment
+import com.example.samplerecyclerview.ui.fragment.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction().add(R.id.frameLayout, SimpleRecyclerFragment.newInstance()).commit()
+            supportFragmentManager.beginTransaction().add(R.id.frameLayout, MainFragment.newInstance()).commit()
         }
     }
 }

@@ -18,7 +18,7 @@ class Adapter(private val list: List<ItemData>) : RecyclerView.Adapter<ViewHolde
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.titleTextView.text = list.get(position).title
-        holder.contentsTextView.text = list.get(position).contents
+        holder.titleTextView.text = list[position].title
+        holder.contentsTextView.text = list[position].contents
     }
 }
