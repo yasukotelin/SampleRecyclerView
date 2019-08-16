@@ -1,12 +1,16 @@
 package com.example.samplerecyclerview.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.samplerecyclerview.CustomRecyclerActivity
 
 import com.example.samplerecyclerview.R
+import com.example.samplerecyclerview.SimpleRecyclerActivity
+import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {
 
@@ -25,6 +29,11 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        childFragmentManager.beginTransaction().replace(R.id.frameLayout, SimpleRecyclerFragment.newInstance()).commit()
+        simpleRecyclerCardView.setOnClickListener {
+            startActivity(Intent(context, SimpleRecyclerActivity::class.java))
+        }
+        customRecyclerCardView.setOnClickListener {
+            startActivity(Intent(context, CustomRecyclerActivity::class.java))
+        }
     }
 }
