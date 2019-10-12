@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 
 import com.example.samplerecyclerview.R
 import com.example.samplerecyclerview.ui.recycler.simplerecycler.Adapter
@@ -50,6 +51,12 @@ class SimpleRecyclerFragment : Fragment() {
         )
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = Adapter(list)
+        recyclerView.adapter = Adapter(list) { itemData ->
+            Toast.makeText(
+                context!!,
+                "Title : ${itemData.title} \nContent : ${itemData.contents}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 }

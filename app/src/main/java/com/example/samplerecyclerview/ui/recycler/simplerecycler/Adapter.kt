@@ -5,11 +5,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.samplerecyclerview.R
 
-class Adapter(private val list: List<ItemData>) : RecyclerView.Adapter<ViewHolder>() {
+class Adapter(
+    private val list: List<ItemData>,
+    private val adapterOnclick: (ItemData) -> Unit
+) :
+    RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // onCreateViewHolderでItemレイアウトを指定してViewHolderを生成する
-        val inflate = LayoutInflater.from(parent.context).inflate(R.layout.recycler_item_simple_recycler, parent, false)
+        val inflate = LayoutInflater.from(parent.context)
+            .inflate(R.layout.recycler_item_simple_recycler, parent, false)
         return ViewHolder(inflate)
     }
 
@@ -20,5 +25,7 @@ class Adapter(private val list: List<ItemData>) : RecyclerView.Adapter<ViewHolde
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.titleTextView.text = list[position].title
         holder.contentsTextView.text = list[position].contents
+
+        holder.itemView.setOnClickListener { adapterOnclick(list[position]) }
     }
 }
